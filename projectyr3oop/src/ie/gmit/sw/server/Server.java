@@ -1,3 +1,6 @@
+/**
+ * Author Alan Doyle-G00328071
+ */
 package ie.gmit.sw.server;
 
 import java.io.BufferedReader;
@@ -10,7 +13,18 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
+/**
+ * The Class Server.
+ */
 public class Server {
+  
+  /**
+   * The main method.
+   *
+   * @param args the arguments
+   * @throws Exception the exception
+   */
   public static void main(String[] args) throws Exception {
     ServerSocket m_ServerSocket = new ServerSocket(7777,10);
     int id = 0;
@@ -23,6 +37,8 @@ public class Server {
 }
 
 class ClientServiceThread extends Thread {
+  
+  /** The client socket. */
   Socket clientSocket;
   String message;
   int clientID = -1;
@@ -35,6 +51,11 @@ class ClientServiceThread extends Thread {
     clientID = i;
   }
 
+  /**
+   * Send message.
+   *
+   * @param msg the msg
+   */
   void sendMessage(String msg)
 	{
 		try{
@@ -46,6 +67,10 @@ class ClientServiceThread extends Thread {
 			ioException.printStackTrace();
 		}
 	}
+  
+  /* (non-Javadoc)
+   * @see java.lang.Thread#run()
+   */
   public void run() {
     System.out.println("Accepted Client : ID - " + clientID + " : Address - "
         + clientSocket.getInetAddress().getHostName());

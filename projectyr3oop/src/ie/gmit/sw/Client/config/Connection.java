@@ -1,21 +1,47 @@
+/**
+ *@author Alan Doyle-G00328071 
+ */
 package ie.gmit.sw.Client.config;
 import java.util.Scanner;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Connection.
+ */
 public class Connection {
 
 	
 
+		/** The request socket. */
 		//54.245.158.25
 			Socket requestSocket;
+			
+			/** The out. */
 			ObjectOutputStream out;
-		 	ObjectInputStream in;
-		 	String message="";
-		 	String ipaddress;
-		 	Scanner stdin;
-		 	Connection(){}
+		 	
+	 		/** The in. */
+	 		ObjectInputStream in;
+		 	
+	 		/** The message. */
+	 		String message="";
+		 	
+	 		/** The ipaddress. */
+	 		String ipaddress;
+		 	
+	 		/** The stdin. */
+	 		Scanner stdin;
+		 	
+	 		/**
+	 		 * Instantiates a new connection.
+	 		 */
+	 		Connection(){}
+			
+			/**
+			 * Run.
+			 */
 			void run()
 			{
 				stdin = new Scanner(System.in);
@@ -67,6 +93,12 @@ public class Connection {
 					}
 				}
 			}
+			
+			/**
+			 * Send message.
+			 *
+			 * @param msg the msg
+			 */
 			void sendMessage(String msg)
 			{
 				try{
@@ -78,6 +110,12 @@ public class Connection {
 					ioException.printStackTrace();
 				}
 			}
+			
+			/**
+			 * The main method.
+			 *
+			 * @param args the arguments
+			 */
 			public static void main(String args[])
 			{
 				Connection client = new Connection();
