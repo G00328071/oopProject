@@ -4,6 +4,7 @@
 package ie.gmit.sw.Client.config;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,21 +16,20 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-
 /**
  * The Class XmlParser.
  */
 public class XmlParser {
+	private String username;
+	private String ipAddress;
 
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(String[] args) {
+	private Node port;
 
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	ArrayList<String> list = new ArrayList<>(); 
+
+	public void XmlParser() {
+
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse("config.xml");
@@ -39,19 +39,24 @@ public class XmlParser {
 
 				if (l.getNodeType() == Node.ELEMENT_NODE) {
 					Element item = (Element) l;
-					String username = item.getAttribute("username");
+					username = item.getAttribute("username");
+					//System.out.println("username : " + username);
+
 					NodeList childNodes = item.getChildNodes();
-					System.out.println("username : " + username);
 
 					for (int j = 0; j < childNodes.getLength(); j++) {
 						Node n = childNodes.item(j);
 
 						if (n.getNodeType() == Node.ELEMENT_NODE) {
 							Element element = (Element) n;
-							System.out.println(element.getTagName() + " : " + element.getTextContent());
+
+						 list.add(element.getTextContent());
+						
+							
 
 						}
 					}
+
 				}
 			}
 		} catch (ParserConfigurationException e) {
@@ -65,6 +70,14 @@ public class XmlParser {
 			e.printStackTrace();
 		}
 
+	}
+
+	public ArrayList<String> getList() {
+		return list;
+	}
+
+	public void setList(ArrayList<String> list) {
+		this.list = list;
 	}
 
 }
