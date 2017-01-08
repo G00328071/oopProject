@@ -39,7 +39,7 @@ public class Server {
 
 class ClientServiceThread extends Thread {
 
-	/** The client socket. */
+	/** declares a client socket. */
 	Socket clientSocket;
 	String message;
 	int clientID = -1;
@@ -55,10 +55,10 @@ class ClientServiceThread extends Thread {
 	}
 
 	/**
-	 * Send message.
+	 * Send message method.
 	 *
 	 * @param msg
-	 *            the msg
+	 *            
 	 */
 	void sendMessage(String msg) {
 		try {

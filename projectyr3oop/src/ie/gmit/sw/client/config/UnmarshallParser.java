@@ -1,12 +1,19 @@
-package ie.gmit.sw.Client.config;
+package ie.gmit.sw.client.config;
 
 import javax.xml.bind.*;
+
 import java.io.*;
 
-public class Unmarshall {
+public class UnmarshallParser {
+
+	ClientConfig parse;
+
+	public UnmarshallParser(ClientConfig parse) {
+		this.parse = parse;
+	}
 
 	public void Unmarshall() {
-		
+
 		try {
 
 			InputStream file = new FileInputStream("config.xml");
@@ -17,16 +24,11 @@ public class Unmarshall {
 
 			ClientConfig cf = (ClientConfig) um.unmarshal(file);
 
-			String user= cf.getUsername();
-			System.out.println("username : " + user);
-			
-			
-			System.out.println("host : " + cf.getHost());
-			//cf.setHost(host);
-			System.out.println("port : " + cf.getPort());
-			//cf.setPort(port);
-			
-			System.out.println("dir : " + cf.getDir());
+			parse.setUsername(cf.getUsername());
+			parse.setHost(cf.getHost());
+			parse.setPort(cf.getPort());
+			parse.setDir(cf.getDir());
+
 		} catch (JAXBException e) {
 
 			System.out.println("" + e.getMessage());

@@ -1,4 +1,4 @@
-package ie.gmit.sw.Client.config;
+package ie.gmit.sw.client.config;
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement

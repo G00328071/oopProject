@@ -1,5 +1,5 @@
 <clientConfig username="gmit-sw2016">
-	<host>127.0.0.12</host>
+	<host>127.0.0.1</host>
 	<port>7777</port>
 	<dir>./downloads</dir>
 </clientConfig>
