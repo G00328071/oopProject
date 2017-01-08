@@ -47,6 +47,8 @@ class ClientServiceThread extends Thread {
 	ObjectOutputStream out;
 	ObjectInputStream in;
 
+
+			
 	ClientServiceThread(Socket s, int i) {
 		clientSocket = s;
 		clientID = i;
