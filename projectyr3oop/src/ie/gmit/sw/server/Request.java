@@ -7,6 +7,7 @@ import java.util.concurrent.BlockingQueue;
 
 
 /**
+ * @author Alan Doyle-G00328071
  * The Class Request.
  */
 public class Request implements Serializable {

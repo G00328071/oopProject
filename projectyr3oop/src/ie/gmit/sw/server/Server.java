@@ -27,10 +27,19 @@ public class Server {
 	 *             the exception
 	 */
 	public static void main(String[] args) throws Exception {
+		/**
+		 * create a new server socket on port 7777 and max of 10 threads
+		 * 
+		 */
 		ServerSocket m_ServerSocket = new ServerSocket(7777, 10);
 		int id = 0;
 		while (true) {
 			Socket clientSocket = m_ServerSocket.accept();
+			/**
+			 * new instance of ClientServiceThread class.
+			 * create a new client thread
+			 * and start the thread
+			 */
 			ClientServiceThread cliThread = new ClientServiceThread(clientSocket, id++);
 			cliThread.start();
 		}
@@ -47,8 +56,6 @@ class ClientServiceThread extends Thread {
 	ObjectOutputStream out;
 	ObjectInputStream in;
 
-
-			
 	ClientServiceThread(Socket s, int i) {
 		clientSocket = s;
 		clientID = i;
@@ -58,7 +65,7 @@ class ClientServiceThread extends Thread {
 	 * Send message method.
 	 *
 	 * @param msg
-	 *            
+	 * 
 	 */
 	void sendMessage(String msg) {
 		try {
@@ -70,11 +77,11 @@ class ClientServiceThread extends Thread {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * run method.
 	 * 
-	 * @see java.lang.Thread#run()
 	 */
+
 	public void run() {
 		System.out.println(
 				"Accepted Client : ID - " + clientID + " : Address - " + clientSocket.getInetAddress().getHostName());
@@ -91,33 +98,15 @@ class ClientServiceThread extends Thread {
 
 					System.out.println("client>" + clientID + "  " + message);
 
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					sendMessage("server got the following: " + message);
 					message = (String) in.readObject();
 
-					
-					
-					
-					
-					
-					
-					
-					
-					
 				} catch (ClassNotFoundException classnot) {
 					System.err.println("Data received in unknown format");
 				}
-
+				/**
+				 * keep alive until message "bye" received
+				 */
 			} while (!message.equals("bye"));
 
 			System.out.println(

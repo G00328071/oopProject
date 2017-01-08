@@ -8,16 +8,17 @@ import java.util.concurrent.BlockingQueue;
 
 import ie.gmit.sw.server.Request;
 
-// TODO: Auto-generated Javadoc
+
 /**
+ * @author Alan Doyle-G00328071
  * The Class ReguestLogger.
  */
 public class ReguestLogger implements Runnable {
 	
-	/** The fw. */
+	/** variable fw. */
 	private FileWriter fw;
 	
-	/** The q. */
+	/** variable q. */
 	private BlockingQueue q;
 	 
 	
@@ -40,25 +41,23 @@ public class ReguestLogger implements Runnable {
 	
 	 
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Runnable#run()
-	 */
+	
 	public void run() {
 		while(true){
 			try {
 				Request r = (Request) q.take();
 				fw.write(r.toString());
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			try {
 				fw.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}

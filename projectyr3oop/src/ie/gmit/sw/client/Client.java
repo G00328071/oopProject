@@ -96,10 +96,8 @@ public class Client {
 	}
 
 	/**
-	 * Send message.
+	 * Send message method
 	 *
-	 * @param msg
-	 *            the msg
 	 */
 	void sendMessage(String msg) {
 		try {

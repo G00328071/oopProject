@@ -4,14 +4,29 @@ import javax.xml.bind.*;
 
 import java.io.*;
 
+/**
+ * @author Alan Doyle-G00328071
+ * The Class UnmarshallParser.
+ */
 public class UnmarshallParser {
 
+	/** The parse. */
 	ClientConfig parse;
 
+	/**
+	 * Instantiates a new unmarshall parser.
+	 *
+	 * @param parse
+	 *           
+	 */
 	public UnmarshallParser(ClientConfig parse) {
 		this.parse = parse;
 	}
 
+	/**
+	 * Unmarshall.
+	 * parses the config file.
+	 */
 	public void Unmarshall() {
 
 		try {
